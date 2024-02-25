@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../static/css/login_styles.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../static/bootstrap/bootstrap.css" rel="stylesheet">
+    
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/login" method="post" class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <input type="text" id="username" name="username" class="input-block-level" placeholder="Username" required>
+            <input type="password" id="password" name="password" class="input-block-level" placeholder="Password" required>
+            <button class="btn btn-primary" type="submit">Sign in</button>
+        </form>     
+    </div>
+    <form action="/register" method="get" class="form-signup position-absolute top-0 end-0 mt-4 mr-4">
+        <button class="btn btn-link" type="submit">Sign up</button>
+    </form>
+</body>
+</html>

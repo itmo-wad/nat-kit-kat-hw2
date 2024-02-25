@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../static/css/login_styles.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../static/bootstrap/bootstrap_edit.css" rel="stylesheet">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Profile</h2>
+    
+        <!-- Display current username -->
+        <p>Current Username: {{ username }}</p>
+    
+        <!-- Display current avatar -->
+        {% if avatar_path %}
+            <img src="{{ url_for('uploaded_file', filename=os.path.basename(avatar_path)) }}" alt="Avatar" style="max-width: 200px;">
+        {% else %}
+            <img src="{{ url_for('static', filename='images/Default.jpg') }}" alt="Default Avatar" style="max-width: 200px;">
+        {% endif %}
+    
+        <!-- Avatar upload row -->
+        <div class="row">
+            <form method="POST" enctype="multipart/form-data" action="/edit">
+                <div  class="col-md-12">
+                    <input type="file" name="file" class="form-control">
+                    <button class="btn btn-primary" type="submit">Upload</button>
+                </div>
+            </form>
+        </div>
+    
+        <!-- Password change row -->
+        <div class="row">
+            <form method="POST" action="/edit">
+                <div class="col-md-12">
+                    <input type="password" name="new_password" class="form-control" placeholder="New Password">
+                    <input type="password" name="confirm_password" class="form-control" placeholder="Confirm New Password">
+                    <button class="btn btn-primary" type="submit">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Profile and Logout links in the upper right corner -->
+    <form class="position-absolute top-0 end-0 mt-4">
+        <button class="btn btn-link" formaction="/profile" type="submit">Profile</button>
+        <button class="btn btn-link" formaction="/logout" type="submit">Log out</button>
+    </form>
+
+</body>
+</html>
